@@ -1,0 +1,25 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::create('vahara_item_pivot', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('relationship', 32)->index();
+            $table->integer('sort')->nullable();
+            $table->integer('parent_id')->index();
+            $table->integer('child_id')->index();
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('vahara_item_pivot');
+    }
+};

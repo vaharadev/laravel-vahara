@@ -1,0 +1,67 @@
+{
+    "name": "vaharadev/laravel-client",
+    "description": "laravel-client package is a part of vahara-laravel-portal",
+    "keywords": [
+        "vaharadev",
+        "laravel",
+        "laravel-client"
+    ],
+    "homepage": "https://github.com/vaharadev/laravel-client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shrikant Meena",
+            "email": "mail.dev57@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vaharadev\\LaravelClient\\": "src",
+            "Vaharadev\\LaravelClient\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vaharadev\\LaravelClient\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vaharadev\\LaravelClient\\LaravelClientServiceProvider"
+            ],
+            "aliases": {
+                "LaravelClient": "Vaharadev\\LaravelClient\\Facades\\LaravelClient"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
